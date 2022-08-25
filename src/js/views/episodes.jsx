@@ -7,7 +7,9 @@ import { Jumbotron } from '../component/jumbotron.jsx'
 
 export const Episodes = () => {
     return (
-
+<>
+<h1>Episodios</h1>
+</>
         
     )
 

@@ -13,7 +13,7 @@ export const Home = () => (
 	
 			<Jumbotron title="Personajes" ruta = "/characters" />
 		
-		<Jumbotron title="Episodios" />
+		<Jumbotron title="Episodios" ruta = "/episodes" />
 
 
 	</div>
