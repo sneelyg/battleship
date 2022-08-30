@@ -15,6 +15,9 @@ export const Card = (props) => {
                     Ver más sobre {props.title}
                 </a>
             </Link>
+            <p></p>
+            <button className = "btn btn-primary" >Agregar a Favoritos</button>
+
         </div>
         </div >
     );

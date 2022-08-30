@@ -40,10 +40,10 @@ const Layout = () => {
 						<Route exact path="/episodes">
 							<Episodes />
 						</Route>
-						<Route exact path="/episodes/:epnumber">
+						<Route exact path="/episodes/detail/:epID">
 							<DetailEpisode />
 						</Route>
-						<Route exact path="/characters/:charnumber">
+						<Route exact path="/characters/detail/:charID">
 							<DetailChar />
 						</Route>
 						<Route>

@@ -16,7 +16,7 @@ export const Characters = () =>{
 
         {store.characters?.map((obj, index)=>{
             return (
-                <Card title={obj.name}  url = {obj.image}  ruta = {`/characters/ ${obj.id}`  }  />
+                <Card title={obj.name}  url = {obj.image}  ruta = {`/characters/detail/${obj.id}`  }  />
             )
         })}
 

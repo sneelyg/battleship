@@ -28,6 +28,11 @@ export const Navbar = () => {
 							< a class="nav-link active" aria-current="page" href="#">Episodios</a>
 						</Link>
 					</li>
+					<li class="nav-item ">
+						
+							< a class="nav-link active" aria-current="page" href="#">Favoritos</a>
+						
+					</li>
 				</ul>
 			</div>
 		</div>
