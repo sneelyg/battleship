@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from 'react-router-dom';
 
 
 
@@ -8,12 +9,14 @@ export const Card = (props) => {
             <img src={props.url} className="card-img-top mt-2 rounded" alt="..." />
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
-                <p className="card-text">{props.description}.</p>
+                <p className="card-text">{props.description}</p>
+                <Link to= {props.ruta}>
                 <a href="#" className="btn btn-primary">
                     Ver más sobre {props.title}
                 </a>
-            </div>
+            </Link>
         </div>
+        </div >
     );
 }
 /*export const Card = (props) => {

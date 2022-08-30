@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+
+			characters: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -19,6 +21,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
+			getCharacters: () => {
+
+				var requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				  };
+
+				fetch("https://rickandmortyapi.com/api/character/", requestOptions)
+					.then(response => response.json())
+					.then(result => setStore({characters:result.results}))
+					.catch(error => console.log('error', error));
+			}	,
+
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, useContext } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
@@ -8,9 +8,12 @@ import { Single } from "./views/single";
 import { Characters } from "./views/characters.jsx";
 import { Episodes } from "./views/episodes.jsx";
 import injectContext from "./store/appContext";
+import {Context} from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { DetailEpisode } from "./views/detailepisode.jsx";
+import { DetailChar } from "./views/detailchar.jsx";
 
 
 //create your first component
@@ -36,6 +39,12 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/episodes">
 							<Episodes />
+						</Route>
+						<Route exact path="/episodes/:epnumber">
+							<DetailEpisode />
+						</Route>
+						<Route exact path="/characters/:charnumber">
+							<DetailChar />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
