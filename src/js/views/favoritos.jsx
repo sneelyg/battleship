@@ -8,7 +8,7 @@ import { DetCard } from '../component/detcard.jsx';
 import { Navbar } from '../component/navbar.js'
 import { Jumbotron } from '../component/jumbotron.jsx'
 
-export const DetailChar = () => {
+export const Favoritos = () => {
     const { store, actions } = useContext(Context);
     const { charID } = useParams();
     const numchar = charID *1 -1;
@@ -20,19 +20,11 @@ export const DetailChar = () => {
     return (
         <div className="text-center mt-5 row">
           
-            <h1 className="display-1">{store.characters[numchar]?.name} </h1>
-        
-            <div className="row justify-content-around">
-                <DetCard url={store.characters[numchar]?.image}         />
-
-                <DetCard
-                    title={` ${store.characters[numchar]?.name}  vive en ${store.characters[numchar]?.location.name}  y aparece en los episodios ${lista_episodios} `}
-                />
-
-            </div>
-
-
-
+        {store.favoritos.map((elm, i)=> {
+            
+                <li>elm</li>
+        })
+    }
 
         </div>
     )

@@ -4,6 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			characters: [],
 
+			favoritos: [1, 3, 5],
+
 			demo: [
 				{
 					title: "FIRST",
@@ -54,7 +56,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			setFavoritos: (index)=>{
+				const store = getStore();
+				const favoritos = store.favoritos.map((elm,i) =>{
+					if(index==i){ return elm; }
+
+
+				});
+				setStore({favoritos : favoritos});
+
 			}
+
 		}
 	};
 };

@@ -9,6 +9,7 @@ import { Characters } from "./views/characters.jsx";
 import { Episodes } from "./views/episodes.jsx";
 import injectContext from "./store/appContext";
 import {Context} from "./store/appContext";
+import {Favoritos} from  "./views/favoritos.jsx";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
@@ -45,6 +46,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/characters/detail/:charID">
 							<DetailChar />
+						</Route>
+						<Route exact path="/favoritos">
+							<Favoritos />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
