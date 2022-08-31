@@ -19,8 +19,10 @@ export const Card = (props) => {
                     </a>
                 </Link>
                 <p></p>
-                <button className="btn btn-primary"
-                onClick ={ ()=> actions.setFavoritos(props.indice)}
+                <button className="btn btn-danger opacity-75"
+                onClick ={ ()=> {
+                    actions.setFavoritos(props.indice);
+                console.log (store.favoritos);}}
                 >
                     Agregar a Favoritos</button>
 

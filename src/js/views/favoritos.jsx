@@ -8,24 +8,22 @@ import { DetCard } from '../component/detcard.jsx';
 import { Navbar } from '../component/navbar.js'
 import { Jumbotron } from '../component/jumbotron.jsx'
 
-export const Favoritos = () => {
-    const { store, actions } = useContext(Context);
-    const { charID } = useParams();
-    const numchar = charID *1 -1;
+export const Favoritos = () =>{ 
+    const {store, actions} = useContext(Context);
 
-    const lista_episodios = store.characters[numchar]?.episode.map((elm,index)=>{
-        return elm.substring(40) + " ";
-    })
 
     return (
-        <div className="text-center mt-5 row">
-          
-        {store.favoritos.map((elm, i)=> {
-            
-                <li>elm</li>
-        })
-    }
+    <div className="text-center mt-5 row">
 
-        </div>
-    )
-};
+        {store.favoritos?.map((obj, index)=>{
+            return (
+                <Card key={index} title={obj.name}  url = {obj.image}  ruta = {`/characters/detail/${obj.id}`} indice={obj.id}  />
+            )
+        })}
+
+
+
+
+    </div>
+
+)};

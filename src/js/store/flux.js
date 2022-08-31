@@ -4,7 +4,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			characters: [],
 
-			favoritos: [1, 3, 5],
+			favoritos: [],
 
 			demo: [
 				{
@@ -30,13 +30,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				var requestOptions = {
 					method: 'GET',
 					redirect: 'follow'
-				  };
+				};
 
 				fetch("https://rickandmortyapi.com/api/character/", requestOptions)
 					.then(response => response.json())
-					.then(result => setStore({characters:result.results}))
+					.then(result => setStore({ characters: result.results }))
 					.catch(error => console.log('error', error));
-			}	,
+			},
 
 			loadSomeData: () => {
 				/**
@@ -57,14 +57,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			setFavoritos: (index)=>{
+			setFavoritos: (id) => {
 				const store = getStore();
-				const favoritos = store.favoritos.map((elm,i) =>{
-					if(index==i){ return elm; }
+				var not_there = true;
+				console.log(not_there);
+				for (let j = 0; j < store.favoritos.length; j++) {
+					if(id == store.favoritos[j].id) not_there=false;
+				}
+				for (let i = 0; i < store.characters.length; i++) {
+						if (id == store.characters[i].id && not_there) setStore({ favoritos: [...store.favoritos, store.characters[i]] })
+				}
+				
+				console.log(not_there);
 
 
-				});
-				setStore({favoritos : favoritos});
+
+
 
 			}
 
