@@ -3,7 +3,7 @@ import { Context } from "../store/appContext.js"
 import { useParams } from "react-router-dom";
 
 import "../../styles/home.css";
-import { Card } from '../component/card.jsx';
+import { FavCard } from '../component/favcard.jsx';
 import { DetCard } from '../component/detcard.jsx';
 import { Navbar } from '../component/navbar.js'
 import { Jumbotron } from '../component/jumbotron.jsx'
@@ -17,7 +17,7 @@ export const Favoritos = () =>{
 
         {store.favoritos?.map((obj, index)=>{
             return (
-                <Card key={index} title={obj.name}  url = {obj.image}  ruta = {`/characters/detail/${obj.id}`} indice={obj.id}  />
+                <FavCard key={index} title={obj.name}  url = {obj.image}  ruta = {`/characters/detail/${obj.id}`} indice={obj.id}  />
             )
         })}
 

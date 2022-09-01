@@ -60,17 +60,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setFavoritos: (id) => {
 				const store = getStore();
 				var not_there = true;
-				console.log(not_there);
+
 				for (let j = 0; j < store.favoritos.length; j++) {
 					if(id == store.favoritos[j].id) not_there=false;
 				}
 				for (let i = 0; i < store.characters.length; i++) {
 						if (id == store.characters[i].id && not_there) setStore({ favoritos: [...store.favoritos, store.characters[i]] })
 				}
-				
-				console.log(not_there);
+			},
 
+			removeFavoritos: (id)=>{
+				const store = getStore();
+				var aux_favoritos=[];
 
+				for (let j = 0; j < store.favoritos.length; j++){
+					if(id != store.favoritos[j].id) aux_favoritos.push(store.favoritos[j])
+				}
+
+				setStore({favoritos : aux_favoritos})
 
 
 

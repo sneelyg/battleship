@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Context } from "../store/appContext.js"
 
 
-export const Card = (props) => {
+export const FavCard = (props) => {
     const { store, actions } = useContext(Context);
 
 
@@ -21,10 +21,10 @@ export const Card = (props) => {
                 <p></p>
                 <button className="btn btn-danger opacity-75"
                 onClick ={ ()=> {
-                    actions.setFavoritos(props.indice);
+                    actions.removeFavoritos(props.indice);
                 }}
                 >
-                    Agregar a Favoritos</button>
+                    Eliminar de Favoritos</button>
 
             </div>
         </div >

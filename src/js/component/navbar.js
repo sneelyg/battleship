@@ -8,31 +8,28 @@ export const Navbar = () => {
 				<Link to="/">
 					<a className="navbar-brand" href="#">Rick and Morty </a>		
 					</Link>
-				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" 
-				aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
+				
 
 				<div className="collapse navbar-collapse" id="navbarNav">
 					<ul className="navbar-nav">
 						<li className="nav-item">
 							<Link to="/">
-								< a className="nav-link active" aria-current="page" href="#">Home</a>
+								<a className="nav-link active" aria-current="page" >Home</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link to="/characters">
-								< a className="nav-link active" aria-current="page" href="#">Caracteres</a>
+								<a className="nav-link active" aria-current="page" >Caracteres</a>
 							</Link>
 						</li>
 						<li className="nav-item">
 							<Link to="/episodes">
-								< a className="nav-link active" aria-current="page" href="#">Episodios</a>
+								<a className="nav-link active" aria-current="page" >Episodios</a>
 							</Link>
 						</li>
 						<li className="nav-item ">
 							<Link to="/favoritos">
-								< a className="nav-link active" aria-current="page" href="#">Favoritos</a>
+								<a className="nav-link active" aria-current="page" >Favoritos</a>
 							</Link>
 						</li>
 					</ul>
