@@ -21,7 +21,7 @@ export const Card = (props) => {
                 <p></p>
                 <button className="btn btn-danger opacity-75"
                 onClick ={ ()=> {
-                    actions.setFavoritos(props.indice);
+                    actions.set_CharFavoritos(props.indice);
                 }}
                 >
                     Agregar a Favoritos</button>

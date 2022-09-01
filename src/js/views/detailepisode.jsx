@@ -15,11 +15,20 @@ export const DetailEpisode = () => {
     const { store, actions } = useContext(Context);
     const { epID } = useParams();
     const numep = epID * 1 - 1;
-    const lista_personajes = store.episodes[numep]?.characters.map((elm, index) => {
+    const lista_personajes = store.episodes[numep]?.characters?.map((elm, index) => {
         return elm.substring(42);
     })
-    const nombres_personajes =(arr)=>{};
-
+    const  nombre_personajes=[];
+    
+    for(let i=0; i < lista_personajes?.length; i++){
+        if (lista_personajes[i]<20){
+            nombre_personajes.push(store.characters[lista_personajes[i]-1]?.name)
+        }
+    }
+    
+   
+    console.log(lista_personajes);
+    console.log(nombre_personajes);
 
     return (
 
@@ -27,7 +36,8 @@ export const DetailEpisode = () => {
           
             <EpDetCard title= {store.episodes[numep]?.name}
             lanzamiento= {store.episodes[numep]?.air_date}
-            personajes = {lista_personajes}/>
+            personajes = {nombre_personajes}/>
+        
 
 
 

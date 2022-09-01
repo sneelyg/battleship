@@ -21,7 +21,7 @@ export const FavCard = (props) => {
                 <p></p>
                 <button className="btn btn-danger opacity-75"
                 onClick ={ ()=> {
-                    actions.removeFavoritos(props.indice);
+                    actions.remove_CharFavoritos(props.indice);
                 }}
                 >
                     Eliminar de Favoritos</button>

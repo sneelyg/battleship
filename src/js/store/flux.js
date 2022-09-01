@@ -4,9 +4,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			characters: [],
 
-			favoritos: [],
+			char_favoritos: [],
 
 			episodes:[],
+			ep_favoritos: [],
 
 			demo: [
 				{
@@ -71,31 +72,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			setFavoritos: (id) => {
+			set_CharFavoritos: (id) => {
 				const store = getStore();
 				var not_there = true;
 
-				for (let j = 0; j < store.favoritos.length; j++) {
-					if(id == store.favoritos[j].id) not_there=false;
+				for (let j = 0; j < store.char_favoritos.length; j++) {
+					if(id == store.char_favoritos[j].id) not_there=false;
 				}
 				for (let i = 0; i < store.characters.length; i++) {
-						if (id == store.characters[i].id && not_there) setStore({ favoritos: [...store.favoritos, store.characters[i]] })
+						if (id == store.characters[i].id && not_there) setStore({ char_favoritos: [...store.char_favoritos, store.characters[i]] })
 				}
 			},
 
-			removeFavoritos: (id)=>{
+			remove_CharFavoritos: (id)=>{
 				const store = getStore();
-				var aux_favoritos=[];
+				let aux_favoritos=[];
 
-				for (let j = 0; j < store.favoritos.length; j++){
-					if(id != store.favoritos[j].id) aux_favoritos.push(store.favoritos[j])
+				for (let j = 0; j < store.char_favoritos.length; j++){
+					if(id != store.char_favoritos[j].id) aux_favoritos.push(store.char_favoritos[j])
 				}
 
-				setStore({favoritos : aux_favoritos})
+				setStore({char_favoritos : aux_favoritos})
+
+
+
+			},
+			set_EpFavoritos: (id) => {
+				const store = getStore();
+				var not_there = true;
+
+				for (let j = 0; j < store.ep_favoritos.length; j++) {
+					if(id == store.ep_favoritos[j].id) not_there=false;
+				}
+				for (let i = 0; i < store.episodes.length; i++) {
+						if (id == store.episodes[i].id && not_there) setStore({ ep_favoritos: [...store.ep_favoritos, store.episodes[i]] })
+				}
+			},
+			remove_EpFavoritos: (id)=>{
+				const store = getStore();
+				let aux_favoritos=[];
+
+				for (let j = 0; j < store.ep_favoritos.length; j++){
+					if(id != store.ep_favoritos[j].id) aux_favoritos.push(store.ep_favoritos[j])
+				}
+
+				setStore({ep_favoritos : aux_favoritos})
 
 
 
 			}
+			
 
 		}
 	};
