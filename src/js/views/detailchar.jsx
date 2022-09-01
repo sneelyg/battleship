@@ -20,7 +20,7 @@ export const DetailChar = () => {
     return (
         <div className="text-center mt-5 row">
             <div className = " bg-light opacity-75 mx-auto my-5" style = {{"width": "80%"}}>
-                <h1 className="display-3">{store.characters[numchar]?.name} </h1>
+                <h1 className="display-5">{store.characters[numchar]?.name} </h1>
             </div>
             <div className="row justify-content-around">
                 <DetCard url={store.characters[numchar]?.image} />

@@ -19,7 +19,7 @@ export const Navbar = () => {
 						</li>
 						<li className="nav-item">
 							<Link to="/characters">
-								<a className="nav-link active" aria-current="page" >Caracteres</a>
+								<a className="nav-link active" aria-current="page" >Personajes</a>
 							</Link>
 						</li>
 						<li className="nav-item">

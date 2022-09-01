@@ -6,6 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			favoritos: [],
 
+			episodes:[],
+
 			demo: [
 				{
 					title: "FIRST",
@@ -34,7 +36,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				fetch("https://rickandmortyapi.com/api/character/", requestOptions)
 					.then(response => response.json())
-					.then(result => setStore({ characters: result.results }))
+					.then(result => setStore({ characters: result.results })) /**Se pone result.results pq la API entrega un objeto, con info y results. */
+					.catch(error => console.log('error', error));
+			},
+
+			getEpisodes: ()=>{
+				var requestOptions = {
+					method: 'GET',
+					redirect: 'follow'
+				  };
+				  
+				  fetch("https://rickandmortyapi.com/api/episode", requestOptions)
+					.then(response => response.json())
+					.then(result => setStore({episodes : result.results}))
 					.catch(error => console.log('error', error));
 			},
 

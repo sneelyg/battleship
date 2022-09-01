@@ -8,7 +8,7 @@ export const Jumbotron = (props) => {
 
             <div className="bg-light p-5 rounded-lg m-5 opacity-75">
                 <h1 className="display-4">{props.title}</h1>
-                <p className="lead">Descubre todos los {props.title}.</p>
+                <p className="lead">{props.description}</p>
                 <hr className="my-4" />
                 <p></p>
                 <Link to = {props.ruta}>
