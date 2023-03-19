@@ -1,0 +1,45 @@
+body{
+    background-image: url("https://www.unh.edu/unhtoday/sites/default/files/styles/article_huge/public/article/2022/ocean_desert.jpeg?itok=Yl-z8ctk");
+    background-size: cover;
+}
+    
+    .cell-0 { /* un-shot / default*/
+        height: 30px;
+        width: 30px;
+        background-color: lightgray;
+        border: 0.5px solid #000;
+    }
+    
+        
+    .cell-1 { /* show-ships*/
+        background-color: green;
+        height: 30px;
+        width: 30px;
+        border: 0.5px solid #000;
+    }
+    
+    
+    .cell-2 { /* fired-ocean*/
+        background-color: blue;
+        height: 30px;
+        width: 30px;
+        border: 0.5px solid #000;
+    }
+    
+    
+    .cell-3 { /* shot ship*/
+        background-color: red;
+        height: 30px;
+        width: 30px;
+        border: 0.5px solid #000;
+    }
+    
+    
+    .cell-4 { /* show-ships*/
+        background-color: green;
+        height: 30px;
+        width: 30px;
+        border: 0.5px solid #000;
+    }
+    
+    

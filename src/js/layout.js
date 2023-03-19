@@ -1,20 +1,18 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, useContext } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
+
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
-import { Characters } from "./views/characters.jsx";
-import { Episodes } from "./views/episodes.jsx";
-import injectContext from "./store/appContext";
-import {Context} from "./store/appContext";
-import {Favoritos} from  "./views/favoritos.jsx";
 
-import { Navbar } from "./component/navbar";
+import { Tablero } from "./views/tablero.jsx";
+
+import injectContext from "./store/appContext";
+import { Context } from "./store/appContext";
 import { Footer } from "./component/footer";
-import { DetailEpisode } from "./views/detailepisode.jsx";
-import { DetailChar } from "./views/detailchar.jsx";
+import { Cell } from "./component/cell_comp.jsx";
+import { Fila } from "./views/fila.jsx";
+import { Fila_comp } from "./views/fila_comp.jsx";
+
 
 
 //create your first component
@@ -24,40 +22,44 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar />
-					<Switch>
-						<Route exact path="/">
-							<Home />
-						</Route>
-						<Route exact path="/home">
-							<Home />
-						</Route>
-						<Route exact path="/characters">
-							<Characters />
-						</Route>
-						<Route exact path="/episodes">
-							<Episodes />
-						</Route>
-						<Route exact path="/episodes/detail/:epID">
-							<DetailEpisode />
-						</Route>
-						<Route exact path="/characters/detail/:charID">
-							<DetailChar />
-						</Route>
-						<Route exact path="/favoritos">
-							<Favoritos />
-						</Route>
-						<Route>
-							<h1>Not found!</h1>
-						</Route>
-					</Switch>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
-		</div>
+		<div className="p-5  row justify-content-around">
+			<div className="text-center">
+				<h1 className="display-5">Trafalgar Battle</h1>
+			</div>
+			<div className="col d-flex flex-column">
+				<h1 className="ml-5">Tu Oponente</h1>
+				<p>Dispara acá</p>
+				<Tablero />
+				<Fila num={0} />
+				<Fila num={1} />
+				<Fila num={2} />
+				<Fila num={3} />
+				<Fila num={4} />
+				<Fila num={5} />
+				<Fila num={6} />
+				<Fila num={7} />
+				<Fila num={8} />
+				<Fila num={9} />
+			</div>
+			<div className="col d-flex flex-column">
+				<h1 className="ml-5">Tu Tablero</h1>
+				<p>Estos son los disparos de tu oponente</p>
+				<Tablero />
+				<Fila_comp num={0} />
+				<Fila_comp num={1} />
+				<Fila_comp num={2} />
+				<Fila_comp num={3} />
+				<Fila_comp num={4} />
+				<Fila_comp num={5} />
+				<Fila_comp num={6} />
+				<Fila_comp num={7} />
+				<Fila_comp num={8} />
+				<Fila_comp num={9} />
+			</div>
+
+			<Footer />
+
+		</div >
 	);
 };
 

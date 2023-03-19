@@ -1,9 +1,7 @@
 import React from "react";
 import rigoImage from "../../img/rigo-baby.jpg";
-import "../../styles/home.css";
-import { Card } from '../component/card.jsx';
-import { Navbar } from '../component/navbar.js'
-import { Jumbotron } from '../component/jumbotron.jsx'
+import { Cell } from '../component/cell_comp.jsx';
+
 import { Link } from "react-router-dom";
 
 export const Home = () => (

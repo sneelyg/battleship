@@ -2,12 +2,61 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 
-			characters: [],
+			inicio_tablero: [
+				[1, 1, 1, 1, 1, 0, 0, 0, 0, 1],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[1, 0, 0, 1, 1, 0, 0, 0, 0, 0],
+				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[1, 1, 1, 1, 0, 0, 0, 0, 0, 0]
+			],
+			status_tablero: [
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			],
 
-			char_favoritos: [],
 
-			episodes:[],
-			ep_favoritos: [],
+			inicio_tablero_comp: [
+				[0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 1, 1, 0, 0, 1, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[0, 0, 0, 1, 1, 0, 0, 1, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+			],
+			status_tablero_comp: [
+				[0, 1, 1, 1, 1, 1, 0, 0, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 1, 1, 0, 0, 1, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+				[0, 0, 0, 1, 1, 0, 0, 1, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+				[0, 0, 1, 0, 0, 0, 0, 0, 0, 0]
+			],
+			registro_disparos: ['0'],
+
+			fire_count: 0,
+			fire_count_comp: 0,
+
 
 			demo: [
 				{
@@ -22,36 +71,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
+
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
 
-			getCharacters: () => {
 
-				var requestOptions = {
-					method: 'GET',
-					redirect: 'follow'
-				};
-
-				fetch("https://rickandmortyapi.com/api/character/", requestOptions)
-					.then(response => response.json())
-					.then(result => setStore({ characters: result.results })) /**Se pone result.results pq la API entrega un objeto, con info y results. */
-					.catch(error => console.log('error', error));
-			},
-
-			getEpisodes: ()=>{
-				var requestOptions = {
-					method: 'GET',
-					redirect: 'follow'
-				  };
-				  
-				  fetch("https://rickandmortyapi.com/api/episode", requestOptions)
-					.then(response => response.json())
-					.then(result => setStore({episodes : result.results}))
-					.catch(error => console.log('error', error));
-			},
 
 			loadSomeData: () => {
 				/**
@@ -72,59 +99,72 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-			set_CharFavoritos: (id) => {
-				const store = getStore();
-				var not_there = true;
 
-				for (let j = 0; j < store.char_favoritos.length; j++) {
-					if(id == store.char_favoritos[j].id) not_there=false;
+
+			fire_torpedo: (pos_x, pos_y) => {
+				const store = getStore();
+
+				if (store.inicio_tablero[pos_y][pos_x] == 0) {
+					console.log("agua");
+					setStore(store.status_tablero[pos_y][pos_x] = 2)
 				}
-				for (let i = 0; i < store.characters.length; i++) {
-						if (id == store.characters[i].id && not_there) setStore({ char_favoritos: [...store.char_favoritos, store.characters[i]] })
+
+				else if (store.inicio_tablero[pos_y][pos_x] == 1 && store.status_tablero[pos_y][pos_x] == 0) {
+					console.log("fuego")
+					setStore(store.fire_count += 1);
+					console.log(store.fire_count);
+					setStore(store.status_tablero[pos_y][pos_x] = 3)
 				}
+
+				if (store.fire_count == 18) {
+					alert("Has Ganado");
+					setStore(store.fire_count = 0);
+					window.location.reload();
+				}
+
+			},
+			fire_comp: (rand_x, rand_y) => {
+				const store = getStore();
+
+
+				if (store.inicio_tablero_comp[rand_y][rand_x] == 0) {
+					console.log("agua");
+					setStore(store.status_tablero_comp[rand_y][rand_x] = 2)
+				}
+
+				else if (store.inicio_tablero_comp[rand_y][rand_x] == 1 && store.status_tablero_comp[rand_y][rand_x] == 1) {
+					console.log("fuego")
+					setStore(store.fire_count_comp += 1);
+					console.log(store.fire_count_comp);
+					setStore(store.status_tablero_comp[rand_y][rand_x] = 3)
+				}
+
+				if (store.fire_count_comp == 18) {
+					alert("Has Perdido");
+					window.location.reload();
+					setStore(store.fire_count_comp = 0);
+
+				}
+
 			},
 
-			remove_CharFavoritos: (id)=>{
+			generate_random: () => {
 				const store = getStore();
-				let aux_favoritos=[];
-
-				for (let j = 0; j < store.char_favoritos.length; j++){
-					if(id != store.char_favoritos[j].id) aux_favoritos.push(store.char_favoritos[j])
+				let aux = '0';
+				while (store.registro_disparos.includes(aux)) {
+					let rand_x = Math.floor(Math.random() * 10);
+					let rand_y = Math.floor(Math.random() * 10);
+					aux = rand_x.toString() + rand_y.toString();
 				}
 
-				setStore({char_favoritos : aux_favoritos})
-
-
-
+				setStore({
+					registro_disparos: [...store.registro_disparos, aux]
+				});
+				console.log(store.registro_disparos);
 			},
-			set_EpFavoritos: (id) => {
-				const store = getStore();
-				var not_there = true;
-
-				for (let j = 0; j < store.ep_favoritos.length; j++) {
-					if(id == store.ep_favoritos[j].id) not_there=false;
-				}
-				for (let i = 0; i < store.episodes.length; i++) {
-						if (id == store.episodes[i].id && not_there) setStore({ ep_favoritos: [...store.ep_favoritos, store.episodes[i]] })
-				}
-			},
-			remove_EpFavoritos: (id)=>{
-				const store = getStore();
-				let aux_favoritos=[];
-
-				for (let j = 0; j < store.ep_favoritos.length; j++){
-					if(id != store.ep_favoritos[j].id) aux_favoritos.push(store.ep_favoritos[j])
-				}
-
-				setStore({ep_favoritos : aux_favoritos})
-
-
-
-			}
-			
 
 		}
 	};
-};
+}
 
 export default getState;
